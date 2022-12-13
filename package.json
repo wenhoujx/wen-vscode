@@ -10,14 +10,17 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:wen-vscode.helloWorld"
+    "onCommand:wen.remove_leading_whitespace"
   ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "wen-vscode.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "wen.remove_leading_whitespace",
+        "title": "Remove Leading Whitespace", 
+        "category": "Wen"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
