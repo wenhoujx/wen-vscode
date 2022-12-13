@@ -4,7 +4,6 @@ const CommandId = {
 	REMOVE_LEADING_WHITESPACE: 'wen.remove_leading_whitespace',
 }
 
-
 function removeLeadingWhitespace(editor) {
 	const remove = (text) => {
 		if (text.startsWith(" ")) {
