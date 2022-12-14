@@ -1,7 +1,20 @@
 const vscode = require('vscode');
+const cp = require('child_process')
 
 const CommandId = {
 	REMOVE_LEADING_WHITESPACE: 'wen.remove_leading_whitespace',
+	CREATE_BRANCH: 'wen.create_branch',
+}
+
+function createGitBranchWithPrefix() {
+	const branchName = 'whou/test'
+	cp.exec(`git branch ${branchName}` , (err, stdout, stderr) => {
+		console.log('stdout: ' + stdout); 
+		console.log('stderr: ' + stderr);
+		if (err) {
+			console.log('error: ' + err);
+		}
+	});
 }
 
 function removeLeadingWhitespace(editor) {
@@ -19,11 +32,12 @@ function removeLeadingWhitespace(editor) {
 }
 
 function activate(context) {
-	let disposable = vscode.commands.registerTextEditorCommand(
+	context.subscriptions.push(vscode.commands.registerTextEditorCommand(
 		CommandId.REMOVE_LEADING_WHITESPACE,
-		(editor) => removeLeadingWhitespace(editor));
-
-	context.subscriptions.push(disposable);
+		(editor) => removeLeadingWhitespace(editor)));
+	context.subscriptions.push(vscode.commands.registerCommand(
+		CommandId.CREATE_BRANCH,
+		() => createGitBranchWithPrefix()));
 }
 
 // This method is called when your extension is deactivated
