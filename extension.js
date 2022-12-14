@@ -3,7 +3,7 @@ const cp = require('child_process')
 
 const CommandId = {
 	REMOVE_LEADING_WHITESPACE: 'wen.remove_leading_whitespace',
-	CREATE_BRANCH: 'wen.create_branch',
+	GIT_BRANCH: 'wen.git_branch',
 }
 
 function createGitBranchWithPrefix() {
@@ -36,7 +36,7 @@ function activate(context) {
 		CommandId.REMOVE_LEADING_WHITESPACE,
 		(editor) => removeLeadingWhitespace(editor)));
 	context.subscriptions.push(vscode.commands.registerCommand(
-		CommandId.CREATE_BRANCH,
+		CommandId.GIT_BRANCH,
 		() => createGitBranchWithPrefix()));
 }
 

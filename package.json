@@ -14,7 +14,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:wen.remove_leading_whitespace"
+    "onCommand:wen.remove_leading_whitespace",
+    "onCommand:wen.git_branch"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -25,7 +26,7 @@
         "category": "Wen"
       }, 
       {
-        "command": "wen.create_branch", 
+        "command": "wen.git_branch", 
         "title": "Create Git Branch", 
         "category": "Wen"
       }
