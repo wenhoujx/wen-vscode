@@ -6,10 +6,16 @@ const CommandId = {
 	GIT_BRANCH: 'wen.git_branch',
 }
 
-function createGitBranchWithPrefix() {
-	const branchName = 'whou/test1'
-	vscode.window.showInformationMessage(`execute git checkout -b ${branchName}`)
-	cp.execSync(`git checkout -b ${branchName}`);
+async function createGitBranchWithPrefix() {
+	const branchNameBase = await vscode.window.showInputBox({
+		placeHolder: "Branch Name",
+		prompt: "Branch Name",
+	});
+	const now = new Date()
+	const branchName = `whou/${now.getMonth() + 1}-${now.getDate()}/${branchNameBase}`
+	const command = `git checkout -b ${branchName}`
+	const terminal = vscode.window.createTerminal(`Git ${branchNameBase}`);
+	terminal.sendText(command);
 }
 
 function removeLeadingWhitespace(editor) {
