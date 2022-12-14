@@ -1,5 +1,4 @@
 const vscode = require('vscode');
-const cp = require('child_process')
 
 const CommandId = {
 	REMOVE_LEADING_WHITESPACE: 'wen.remove_leading_whitespace',
