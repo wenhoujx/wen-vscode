@@ -8,7 +8,7 @@ const CommandId = {
 
 function createGitBranchWithPrefix() {
 	const branchName = 'whou/test'
-	cp.exec(`git branch ${branchName}` , (err, stdout, stderr) => {
+	cp.exec(`git checkout -b ${branchName}` , (err, stdout, stderr) => {
 		console.log('stdout: ' + stdout); 
 		console.log('stderr: ' + stderr);
 		if (err) {
